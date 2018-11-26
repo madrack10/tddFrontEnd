@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { HeaderComponent } from './header/header.component';
+// import { HeaderComponent } from './header/header.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
@@ -27,13 +27,13 @@ import { AccueilComponent } from './headers/accueil/accueil.component';
 import { OffresListComponent } from './offres-list/offres-list.component';
 import { SingleOffreComponent } from './offres-list/single-offre/single-offre.component';
 import { FormOffreComponent } from './offres-list/form-offre/form-offre.component';
+import { PanelComponent } from './content/panel/panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     SigninComponent,
-    HeaderComponent,
     NavbarComponent,
     FooterComponent,
     NewletterComponent,
@@ -43,6 +43,7 @@ import { FormOffreComponent } from './offres-list/form-offre/form-offre.componen
     OffresListComponent,
     SingleOffreComponent,
     FormOffreComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,

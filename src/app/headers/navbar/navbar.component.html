@@ -18,15 +18,19 @@
             <i class="material-icons">apps</i> Emploi
           </a>
           <div class="dropdown-menu dropdown-with-icons">
-            <a class="dropdown-item">
-              <i class="material-icons">select_all</i> Tous les offres
+            <a class="dropdown-item" routerLink="offres/all">
+              <i class="material-icons" >select_all</i> Tous les offres
             </a>
-            <a class="dropdown-item">
-              <i class="material-icons">layers</i> Offre d'emploi
+            <a class="dropdown-item" routerLink="offres/emploi">
+              <i class="material-icons" >layers</i> Offre d'emploi
             </a>
-            <a class="dropdown-item">
+            <a class="dropdown-item" routerLink="auth/stage">
               <i class="material-icons">content_paste</i> Stage
             </a>
+            <a class="dropdown-item" routerLink="offres/addOffre">
+              <i class="material-icons">add</i> Ajouter Offres
+            </a>
+
           </div>
         </li>
         <li class="dropdown nav-item">
@@ -38,9 +42,10 @@
               <i class="material-icons">fingerprint</i> Login
             </a>
             <a class="dropdown-item" routerLink="auth/signup">
-              <i class="material-icons">person_add</i> S&apos;Inscrire
+              <i class="material-icons">person_add</i> S'inscrire
             </a>
           </div>
+
         </li>
 
         <li class="nav-item">
@@ -62,3 +67,5 @@
     </div>
   </div>
 </nav>
+
+<router-outlet></router-outlet>

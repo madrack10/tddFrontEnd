@@ -28,6 +28,7 @@ import { OffresListComponent } from './offres-list/offres-list.component';
 import { SingleOffreComponent } from './offres-list/single-offre/single-offre.component';
 import { FormOffreComponent } from './offres-list/form-offre/form-offre.component';
 import { PanelComponent } from './content/panel/panel.component';
+import { HomeComponent } from './home/home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PanelComponent } from './content/panel/panel.component';
     SingleOffreComponent,
     FormOffreComponent,
     PanelComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

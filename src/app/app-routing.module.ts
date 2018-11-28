@@ -7,6 +7,7 @@ import { NavbarComponent } from './headers/navbar/navbar.component';
 import { HomeComponent } from './home/home/home.component';
 import { OffresListComponent } from './offres-list/offres-list.component';
 import { FormOffreComponent } from './offres-list/form-offre/form-offre.component';
+import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

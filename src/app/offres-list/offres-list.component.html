@@ -232,7 +232,7 @@
 
 
           <div class="card card-plain card-description">
-            <div class="row">
+            <div class="row" *ngFor="let offre of offres">
               <div class="col-md-3">
                 <div class="card-header card-header-image">
                   <a href="#">
@@ -241,22 +241,22 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <h6 class="card-category text-info">Enterprise</h6>
+                <h6 class="card-category text-info">{{offre.titre}}</h6>
                 <h3 class="card-title">
-                  <a href="#">Marketing Digital</a>
+                  <a href="#">{{offre.domaine}}</a>
                 </h3>
                 <p class="card-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora saepe
-                  veritatis maiores aliquam sequi possimus consectetur commodi, molestias non.
-                  Quo maxime vero dolorum voluptatem possimus atque earum fuga, in architecto!
-                  <a href="#"> Read More </a>
+                    {{offre.description}}
+                  <a href="#"> Voir Plus </a>
                 </p>
                 <p class="author">
                   by
                   <a href="#">
-                    <b>Ibrahima</b>
+                    <b>{{offre.auteur}}</b>
                   </a>, Il y a 2 jours
+                  
                 </p>
+                <p>publié le {{offre.publishOn}}</p>
               </div>
             </div>
           </div>
@@ -295,68 +295,6 @@
           </div>
           <br>
 
-
-          <div class="card card-plain card-description">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="card-header card-header-image">
-                  <a href="#">
-                    <img class="img" src="../assets/img/bg2.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h6 class="card-category text-info">Enterprise</h6>
-                <h3 class="card-title">
-                  <a href="#">Marketing Digital</a>
-                </h3>
-                <p class="card-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora saepe
-                  veritatis maiores aliquam sequi possimus consectetur commodi, molestias non.
-                  Quo maxime vero dolorum voluptatem possimus atque earum fuga, in architecto!
-                  <a href="#"> Read More </a>
-                </p>
-                <p class="author">
-                  by
-                  <a href="#">
-                    <b>Ibrahima</b>
-                  </a>, Il y a 2 jours
-                </p>
-              </div>
-            </div>
-          </div>
-          <br>
-
-          <div class="card card-plain card-description">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="card-header card-header-image">
-                  <a href="#">
-                    <img class="img" src="../assets/img/bg2.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <h6 class="card-category text-info">Enterprise</h6>
-                <h3 class="card-title">
-                  <a href="#">Marketing Digital</a>
-                </h3>
-                <p class="card-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora saepe
-                  veritatis maiores aliquam sequi possimus consectetur commodi, molestias non.
-                  Quo maxime vero dolorum voluptatem possimus atque earum fuga, in architecto!
-                  <a href="#"> Read More </a>
-                </p>
-                <p class="author">
-                  by
-                  <a href="#">
-                    <b>Ibrahima</b>
-                  </a>, Il y a 2 jours
-                </p>
-              </div>
-            </div>
-          </div>
-          <br>
 
         </div>
 

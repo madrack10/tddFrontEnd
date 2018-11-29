@@ -20,4 +20,13 @@ export class OffresListComponent implements OnInit {
       .subscribe(offrir => this.offres = offrir);
   }
 
+
+
+  // tslint:disable-next-line:member-ordering
+  selectedOffre: Offre;
+
+  onSelect(offre: Offre): void {
+    this.selectedOffre = offre;
+  }
+
 }

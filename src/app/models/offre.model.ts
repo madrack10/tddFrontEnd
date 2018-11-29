@@ -9,8 +9,8 @@ export class Offre {
     dateOuverture: Date;
     dateLimite: Date ;
     localisation: string;
-    auteur: number;
-    typeoffre: number;
-    domaine: number;
+    auteur: string;
+    typeoffre: string;
+    domaine: string;
 }
 

@@ -242,21 +242,23 @@
               </div>
               <div class="col-md-6">
                 <h6 class="card-category text-info">{{offre.titre}}</h6>
-                <h3 class="card-title">
+              
+                <h6 class="card-title">
                   <a href="#">{{offre.domaine}}</a>
-                </h3>
+                </h6>
+                  <p><i class="material-icons" >person_pin_circle</i><a href="#"> {{offre.localisation}}</a></p>              
+                <h6>
+                    <a href="#"><i class="material-icons">work</i>{{offre.typeoffre}}</a>
+                  </h6>
                 <p class="card-description">
-                    {{offre.description}}
-                  <a href="#"> Voir Plus </a>
+                  {{offre.description}}<a href="#" (click)="onSelect(offre)"> Voir Plus </a>
                 </p>
                 <p class="author">
-                  by
-                  <a href="#">
-                    <b>{{offre.auteur}}</b>
-                  </a>, Il y a 2 jours
-                  
+                    by
+                    <a href="#">
+                      <b>{{offre.auteur}}</b>
+                    </a> publié le {{offre.publishOn}}
                 </p>
-                <p>publié le {{offre.publishOn}}</p>
               </div>
             </div>
           </div>

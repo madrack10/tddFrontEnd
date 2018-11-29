@@ -13,7 +13,9 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class OffresService {
-  private offerUrl = 'http://localhost:8000/tddkApi/v1/offres?format=json';
+  private offerUrl = 'http://localhost:8000/tddkApi/v1/offres';
+  private offreUrl = 'http://localhost:8000/tddkApi/v1/offres';
+
 
   constructor(
     private http: HttpClient,
@@ -22,13 +24,29 @@ export class OffresService {
 
   /** GET Offre from the server */
   getOffres(): Observable<Offre[]> {
-    return this.http.get<Offre[]>(this.offerUrl)
+    const url = `${this.offerUrl}?format=json`;
+    return this.http.get<Offre[]>(url)
       .pipe(
         tap(_ => console.log('ok'), _ => this.log('fetched offers')),
         catchError(this.handleError('getOffres', []))
       );
   }
 
+
+
+  /** GET offre by id. Afficheras 404 si l'id n'est pas trouvé */
+
+  getOffrebyId(id: number): Observable<Offre> {
+    const url = `${this.offerUrl}/${id}`;
+    return this.http.get<Offre>(url)
+      .pipe(
+        tap(_ => this.log('fetched offre id=${id}')),
+        catchError(this.handleError<Offre>('getOffrebyId id = ${id}'))
+      );
+
+  }
+
+ 
 
   /**
      * Handle Http operation that failed.

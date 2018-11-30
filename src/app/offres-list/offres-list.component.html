@@ -242,27 +242,29 @@
               </div>
               <div class="col-md-6">
                 <h6 class="card-category text-info">{{offre.titre}}</h6>
-              
+
                 <h6 class="card-title">
                   <a href="#">{{offre.domaine}}</a>
                 </h6>
-                  <p><i class="material-icons" >person_pin_circle</i><a href="#"> {{offre.localisation}}</a></p>              
-                <h6>
-                    <a href="#"><i class="material-icons">work</i>{{offre.typeoffre}}</a>
-                  </h6>
-                <p class="card-description">
-                  {{offre.description}}<a href="#" (click)="onSelect(offre)"> Voir Plus </a>
+                <p><i class="material-icons">location_on</i>{{offre.localisation}}</p>
+                <p class="card-text">
+                  <i class="material-icons">work</i> {{offre.typeoffre}}
                 </p>
-                <p class="author">
-                    by
-                    <a href="#">
-                      <b>{{offre.auteur}}</b>
-                    </a> publié le {{offre.publishOn}}
+                <p class="card-text">
+                  {{offre.description}}<a href=""  [class.selected]="offre === selectedOffre" (click)="onSelect(offre)">
+                    Voir Plus </a>
+                </p>
+                <p class="author card-text">
+                  by
+                  <b>{{offre.auteur}}</b>
+                  <small class="text-muted"> publié le {{offre.publishOn | date :  'dd/MM/yyyy-HH:mm'}}</small>
                 </p>
               </div>
             </div>
           </div>
           <br>
+          <app-single-offre [offre]="selectedOffre"></app-single-offre>
+
 
 
 

@@ -13,23 +13,21 @@ export class SingleOffreComponent implements OnInit {
   @Input() offre: Offre;
 
   constructor(
-    private route: ActivatedRoute,
-    private offreService: OffresService,
-    private location: Location
+    // private route: ActivatedRoute,
+    // private offreService: OffresService,
+    // private location: Location
   ) { }
 
+
   ngOnInit() {
-    this.getOffre();
+    // this.getOffre();
   }
 
-  getOffre(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.offreService.getOffrebyId(id)
-      .subscribe(offrir => this.offre = offrir);
-  }
-
-
-
+  // getOffre(): void {
+  //   const id = +this.route.snapshot.paramMap.get('id');
+  //   this.offreService.getOffrebyId(id)
+  //     .subscribe(offrir => this.offre = offrir);
+  // }
 
   // goBack(): void {
   //   this.location.back();

@@ -14,7 +14,7 @@ import { MessageService } from './message.service';
 })
 export class OffresService {
   private offerUrl = 'http://localhost:8000/tddkApi/v1/offres';
-  private offreUrl = 'http://localhost:8000/tddkApi/v1/offres';
+  // private offreUrl = 'http://localhost:8000/tddkApi/v1/offres';
 
 
   constructor(

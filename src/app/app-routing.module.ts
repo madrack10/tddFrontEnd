@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'home/auth/signup', component: SignupComponent },
   { path: 'home/auth/signin', component: SigninComponent },
   { path: 'home/offres/all', component: OffresListComponent },
+  { path: 'home/detail/:id', component: OffresListComponent },
   { path: 'home/offres/addOffre', component: FormOffreComponent },
   { path: 'headers/navbar', component: NavbarComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

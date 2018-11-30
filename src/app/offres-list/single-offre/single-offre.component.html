@@ -1,3 +1,40 @@
-<p>
-  single-offre works!
-</p>
+<div class="section">
+  <div class="container">
+    <div class="main main-raised main-product">
+      <div class="" *ngIf="offre">
+        <div class="card-body">
+          <h4 class="card-title">{{offre.titre}}</h4>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <p><i class="material-icons">location_on</i>{{offre.localisation}}</p>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <p><i class="material-icons">work</i> {{offre.typeoffre}}</p>
+            </div>
+          </div>
+
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Poste</li>
+            <p>
+              {{offre.description}}
+            </p>
+            <li class="list-group-item"><u class="">Profil Recherché</u></li>
+            {{offre.profilRequis}}
+            <li class="list-group-item">Avantages</li>
+            {{offre.avantageRelative}}
+          </ul>
+
+          <p class="author card-text">
+            by
+            <b>{{offre.auteur}}</b>
+            <small class="text-muted"> publié le {{offre.publishOn}}</small>
+            <small class="text-muted"> Date limite de {{offre.dateLimite}}</small>
+          </p>
+
+          <p class="card-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

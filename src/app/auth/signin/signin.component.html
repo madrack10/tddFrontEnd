@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                 <div class="card card-login">
-                    <form [formGroup]="signinForm">
+                    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
                         <div class="card-header card-header-warning text-center">
                             <h4 class="card-title">Login</h4>
                             <div class="social-line">
@@ -18,6 +18,7 @@
                                 </a>
                             </div>
                         </div>
+
                         <p class="description text-center">Ou soyez classique</p>
                         <div class="card-body">
                             <!-- <div class="input-group">
@@ -34,7 +35,8 @@
                                         <i class="material-icons">mail</i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control" placeholder="Email..">
+                                <input class="form-control" placeholder="Email.." formControlName="username"
+                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -42,19 +44,23 @@
                                         <i class="material-icons">lock_outline</i>
                                     </span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password..">
+                                <input type="password" class="form-control" placeholder="Password.." formControlName="password"
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                             </div>
 
-                            
+
 
                         </div>
                         <div class="footer text-center">
-                            <!-- <button class="btn btn-primary btn-block btn-flat" type="submit" [disabled]="signinForm.valid">Log In</button> -->
-                            <a href="#" class="btn btn-primary btn-link btn-wd btn-lg">Log IN</a>
-                            <!-- <a href="#">Mot de passe ouiblié</a><br> -->
-                            <div> <span>Chercher a <a href="#">creer un compte</a> ?</span> <br /> <span><a href="#">Mot de passe oublié</a> ?</span> </div>
+                            <button [disabled]="loading" class="btn btn-primary btn-link btn-wd btn-lg">Login</button>
+                            <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                            <!-- <a [routerLink]="['signup']" class="btn btn-primary btn-link btn-wd btn-lg">S'inscrire</a> -->
+                            <div> <span>Chercher a <a [routerLink]="['/signup']">creer un compte</a> ?</span> <br /> 
+                                <span><a href="#">Mot de passe oublié</a> ?</span> </div> 
+                            <!-- <a href="#" [disabled]="loading" class="btn btn-primary btn-link btn-wd btn-lg">Log IN</a>
+                             -->
                         </div>
-                  
+
                     </form>
                 </div>
             </div>

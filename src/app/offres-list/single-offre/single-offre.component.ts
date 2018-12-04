@@ -13,14 +13,15 @@ export class SingleOffreComponent implements OnInit {
   @Input() offre: Offre;
 
   constructor(
-    // private route: ActivatedRoute,
-    // private offreService: OffresService,
+     private route: ActivatedRoute,
+     private offreService: OffresService,
     // private location: Location
   ) { }
 
 
   ngOnInit() {
-    // this.getOffre();
+    //  this.getOffre();
+    // console.log(this.offre);
   }
 
   // getOffre(): void {

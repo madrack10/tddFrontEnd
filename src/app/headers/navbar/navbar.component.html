@@ -19,10 +19,10 @@
           </a>
           <div class="dropdown-menu dropdown-with-icons" routerLinkActive="active">
             <a class="dropdown-item" routerLink="offres/all">
-              <i class="material-icons" >select_all</i> Tous les offres
+              <i class="material-icons">select_all</i> Tous les offres
             </a>
             <a class="dropdown-item" routerLink="offres/emploi">
-              <i class="material-icons" >layers</i> Offre d'emploi
+              <i class="material-icons">layers</i> Offre d'emploi
             </a>
             <a class="dropdown-item" routerLink="auth/stage">
               <i class="material-icons">content_paste</i> Stage
@@ -45,6 +45,13 @@
               <i class="material-icons">person_add</i> S'inscrire
             </a>
           </div>
+
+          <!-- <div class="dropdown-menu dropdown-with-icons" *ngIf="currentUser">
+            <a class="dropdown-item" (click)="logout()">
+              <i class="material-icons">account_circle</i> Logout
+            </a>
+          </div> -->
+
 
         </li>
 

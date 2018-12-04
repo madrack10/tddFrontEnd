@@ -11,7 +11,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 // Toast
@@ -29,6 +29,11 @@ import { SingleOffreComponent } from './offres-list/single-offre/single-offre.co
 import { FormOffreComponent } from './offres-list/form-offre/form-offre.component';
 import { PanelComponent } from './content/panel/panel.component';
 import { HomeComponent } from './home/home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { AlertComponent } from './alert/alert.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,6 +51,7 @@ import { HomeComponent } from './home/home/home.component';
     FormOffreComponent,
     PanelComponent,
     HomeComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +64,16 @@ import { HomeComponent } from './home/home/home.component';
     // Toast
     CommonModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) // ToastrModule added
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [
+    AuthService,
+    AuthGuardService,
+    // Ajouté le lundi 03/12
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

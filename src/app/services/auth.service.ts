@@ -1,43 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
-// import 'rxjs/add/operator/map';
-import { User } from '../models/user.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+import { environment } from 'src/environments/environment';
+// import { User } from '@app/models';
+import {User} from '../models/user.model';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  readonly rootUrl = 'http://127.0.0.1:8000';  // URL to web api
-  constructor(private http: HttpClient) { }
+    private currentUserSubject: BehaviorSubject<User>;
+    public currentUser: Observable<User>;
 
+    constructor(private http: HttpClient) {
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUser = this.currentUserSubject.asObservable();
+    }
 
-  signInUser(user: User) {
-    const body: User = {
-      Username: user.Username,
-      Password: user.Password,
-      Email: user.Email,
-      FirstName: user.FirstName,
-      LastName: user.LastName
-    };
-    const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
-    return this.http.post(this.rootUrl + '/rest-auth/Registration', body, { headers: reqHeader });
-  }
+    public get currentUserValue(): User {
+        return this.currentUserSubject.value;
+    }
 
-  // userAuthentication(userName, password) {
-  //   const data = "username=" + userName + '&password=' + password + "&grant_type=password";
-  //   const reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded', 'No-Auth': 'True' });
-  //   return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
-  // }
+    login(username: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}/rest-auth/login/`, { username, password })
+            .pipe(map(user => {
+                // login successful if there's a jwt token in the response
+                if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                }
 
+                return user;
+            }));
+    }
 
-
-
+    logout() {
+        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
+    }
 }
+

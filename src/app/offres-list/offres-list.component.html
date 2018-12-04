@@ -251,9 +251,17 @@
                   <i class="material-icons">work</i> {{offre.typeoffre}}
                 </p>
                 <p class="card-text">
-                  {{offre.description}}<a href=""  [class.selected]="offre === selectedOffre" (click)="onSelect(offre)">
+                  {{offre.description}}<a href="home/detail/:id" [class.selected]="offre === selectedOffre" (click)="onSelect(offre)">
                     Voir Plus </a>
                 </p>
+                <!-- <p class="card-text" >
+                    {{offre.description}}<a [class.selected]="offre === selectedOffre" 
+                                            (click)="onSelect(offre)" 
+                                            routerLink="home/detail/:id" 
+                                            routerLinkActive="active">
+                      Voir Plus </a>
+                  </p> -->
+
                 <p class="author card-text">
                   by
                   <b>{{offre.auteur}}</b>
@@ -263,9 +271,8 @@
             </div>
           </div>
           <br>
-          <app-single-offre [offre]="selectedOffre"></app-single-offre>
-
-
+          
+          <!-- <app-single-offre [offre]="selectedOffre"></app-single-offre> -->
 
 
           <div class="card card-plain card-description">

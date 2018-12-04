@@ -4,9 +4,25 @@ import { Injectable } from '@angular/core';
 // import 'rxjs/add/operator/toPromise';
 import { Observable, of } from 'rxjs';
 import { Offre } from '../models/offre.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { MessageService } from './message.service';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
+  // // helper function to build the HTTP headers
+  // getHttpOptions() {
+  //   return {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       'Authorization': 'JWT ' + this._userService.token
+  //     })
+  //   };
+  // }
 
 
 @Injectable({
@@ -40,13 +56,24 @@ export class OffresService {
     const url = `${this.offerUrl}/${id}`;
     return this.http.get<Offre>(url)
       .pipe(
-        tap(_ => this.log('fetched offre id=${id}')),
-        catchError(this.handleError<Offre>('getOffrebyId id = ${id}'))
+        tap(_ => this.log(`fetched offre id=${id}`)),
+        catchError(this.handleError<Offre>(`getOffrebyId id = ${id}`))
       );
 
   }
 
- 
+
+  //////// Save methods //////////
+
+  /** POST: add a new offer to the server */
+  AddOffer(offre: Offre): Observable<Offre> {
+    return this.http.post<Offre>(this.offerUrl, offre, httpOptions).pipe(
+      tap((offer: Offre) => this.log(`Offre ajouté w/ id=${offre.id}`)),
+      catchError(this.handleError<Offre>('addOffre'))
+    );
+  }
+
+
 
   /**
      * Handle Http operation that failed.

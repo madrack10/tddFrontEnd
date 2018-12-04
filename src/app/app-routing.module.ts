@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home/home.component';
 import { OffresListComponent } from './offres-list/offres-list.component';
 import { FormOffreComponent } from './offres-list/form-offre/form-offre.component';
 import { CommonModule } from '@angular/common';
+import { SingleOffreComponent } from './offres-list/single-offre/single-offre.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'home/auth/signin', component: SigninComponent },
   { path: 'home/offres/all', component: OffresListComponent },
   { path: 'home/detail/:id', component: OffresListComponent },
+  // { path: 'home/detail/:id', component: SingleOffreComponent },
   { path: 'home/offres/addOffre', component: FormOffreComponent },
   { path: 'headers/navbar', component: NavbarComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

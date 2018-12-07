@@ -22,10 +22,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 
   logout() {
     this.authService.logout();
-    this.router.navigate(['/home/auth/signin']);
+    this.router.navigate(['/home']);
   }
 
 }

@@ -54,7 +54,7 @@
             <a class="dropdown-item" routerLink="offres/addOffre">
               <i class="material-icons">add</i> Ajouter Offres
             </a>
-            <a class="dropdown-item"  (click)="logout()">
+            <a class="dropdown-item" *ngIf="authService.login()"  (click)="logout()">
               <i class="material-icons">exit_to_app</i> Logout
             </a>
           </div>

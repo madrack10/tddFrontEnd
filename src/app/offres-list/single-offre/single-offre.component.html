@@ -28,8 +28,8 @@
           <p class="author card-text">
             by
             <b>{{offre.auteur}}</b>
-            <small class="text-muted"> publié le {{offre.publishOn}}</small>
-            <small class="text-muted"> Date limite de {{offre.dateLimite}}</small>
+            <small class="text-muted"> publié le {{offre.publishOn | date :  'dd/MM/yyyy-HH:mm'}}</small>
+            <small class="text-muted"> Date limite de {{offre.dateLimite | date :  'dd/MM/yyyy-HH:mm'}}</small>
           </p>
 
           <p class="card-text"></p>

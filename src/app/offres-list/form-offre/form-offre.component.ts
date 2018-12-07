@@ -42,22 +42,22 @@ export class FormOffreComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDomaine(),
-      this.addOfferForm = this.formBuilder.group({
-        titre: new FormControl(this.offre.titre, Validators.required),
-        description: new FormControl(this.offre.description, Validators.required),
-        jobID: new FormControl(this.offre.jobID),
-        profilRequis: new FormControl(this.offre.profilRequis, Validators.required),
-        avantageRelative: new FormControl(this.offre.avantageRelative),
-        publishOn: new FormControl(this.offre.publishOn),
-        dateOuverture: new FormControl(this.offre.dateOuverture, Validators.required),
-        dateLimite: new FormControl(this.offre.dateLimite, Validators.required),
-        localisation: new FormControl(this.offre.localisation, Validators.required),
-        // auteur: User;
-        // typeoffre: TypeContrat;
-        // domaine: Domaine;
+    // this.getDomaine(),
+    //   this.addOfferForm = this.formBuilder.group({
+    //     titre: new FormControl(this.offre.titre, Validators.required),
+    //     description: new FormControl(this.offre.description, Validators.required),
+    //     jobID: new FormControl(this.offre.jobID),
+    //     profilRequis: new FormControl(this.offre.profilRequis, Validators.required),
+    //     avantageRelative: new FormControl(this.offre.avantageRelative),
+    //     publishOn: new FormControl(this.offre.publishOn),
+    //     dateOuverture: new FormControl(this.offre.dateOuverture, Validators.required),
+    //     dateLimite: new FormControl(this.offre.dateLimite, Validators.required),
+    //     localisation: new FormControl(this.offre.localisation, Validators.required),
+    //     // auteur: User;
+    //     // typeoffre: TypeContrat;
+    //     // domaine: Domaine;
 
-      });
+    //   });
 
   }
   // getProfiles() {

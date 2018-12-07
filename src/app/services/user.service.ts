@@ -22,7 +22,7 @@ export class UserService {
   }
 
 
-  register(user: User) {
+  register(user) {
     return this.http.post(`${environment.apiUrl}/rest-auth/registration/`, user);
   }
 

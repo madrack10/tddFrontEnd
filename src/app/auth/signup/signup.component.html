@@ -40,7 +40,7 @@
                         <i class="material-icons">mail</i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Email..." formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <input type="text" formControlName="email" class="form-control" placeholder="Email..." [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                       <div *ngIf="f.email.errors.required">L'email est requis</div>
                       <div *ngIf="f.email.errors.email">Email n'est pas valide</div>
@@ -56,10 +56,10 @@
                     </div>
                     <input type="password" placeholder="Mot de passe..." class="form-control" formControlName="password"
                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                          <div *ngIf="f.password.errors.required">Password is required</div>
-                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                      </div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">le mot de passe est requis</div>
+                      <div *ngIf="f.password.errors.minlength">le mot de passe doit avir au moins 6 caractères</div>
+                    </div>
                   </div>
                 </div>
 
@@ -90,11 +90,12 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <a class="btn btn-primary btn-round">S'inscrire</a>
+                  <a class="btn btn-primary btn-round" (click)="onSubmit()" >S'inscrire</a>
                 </div>
               </form>
 
-              <div class="register-footer"> <span>Déja un compte <a [routerLink]="['/home/auth/signin']">Login</a> ?</span> </div>
+              <div class="register-footer"> <span>Déja un compte <a [routerLink]="['/home/auth/signin']">Login</a> ?</span>
+              </div>
 
             </div>
           </div>

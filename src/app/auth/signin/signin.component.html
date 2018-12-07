@@ -35,8 +35,10 @@
                                         <i class="material-icons">mail</i>
                                     </span>
                                 </div>
-                                <input class="form-control" placeholder="Email.." formControlName="username"
-                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                                <input class="form-control" placeholder="Email.." formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">le nom d'utilisateur est requis</div>
+                                </div>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -46,6 +48,9 @@
                                 </div>
                                 <input type="password" class="form-control" placeholder="Password.." formControlName="password"
                                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">le mot de passe est requis</div>
+                                </div>
                             </div>
 
 
@@ -55,11 +60,13 @@
                             <button [disabled]="loading" class="btn btn-primary btn-link btn-wd btn-lg">Login</button>
                             <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                             <!-- <a [routerLink]="['signup']" class="btn btn-primary btn-link btn-wd btn-lg">S'inscrire</a> -->
-                            <div> <span>Chercher a <a [routerLink]="['/signup']">creer un compte</a> ?</span> <br /> 
-                                <span><a href="#">Mot de passe oublié</a> ?</span> </div> 
+                            <div> <span>Chercher a <a [routerLink]="['/home/auth/signup']">creer un compte</a> ?</span> <br />
+                                <span><a href="#">Mot de passe oublié</a> ?</span> </div>
                             <!-- <a href="#" [disabled]="loading" class="btn btn-primary btn-link btn-wd btn-lg">Log IN</a>
                              -->
                         </div>
+                        
+                        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
                     </form>
                 </div>

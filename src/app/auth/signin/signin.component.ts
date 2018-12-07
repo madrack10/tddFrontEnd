@@ -20,6 +20,7 @@ export class SigninComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  error = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +43,7 @@ export class SigninComponent implements OnInit {
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
 

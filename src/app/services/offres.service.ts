@@ -7,6 +7,7 @@ import { Offre } from '../models/offre.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { MessageService } from './message.service';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -14,23 +15,23 @@ const httpOptions = {
 };
 
 
-  // // helper function to build the HTTP headers
-  // getHttpOptions() {
-  //   return {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization': 'JWT ' + this._userService.token
-  //     })
-  //   };
-  // }
+// // helper function to build the HTTP headers
+// getHttpOptions() {
+//   return {
+//     headers: new HttpHeaders({
+//       'Content-Type': 'application/json',
+//       'Authorization': 'JWT ' + this._userService.token
+//     })
+//   };
+// }
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class OffresService {
-  private offerUrl = 'http://localhost:8000/tddkApi/v1/offres';
-  // private offreUrl = 'http://localhost:8000/tddkApi/v1/offres';
+  // private offreUrl = 'http://localhost:8000/tddkApi/v1/offres/';
+  private offreUrl = `${environment.apiUrl}/tddkApi/v1/offres/`;
 
 
   constructor(
@@ -40,7 +41,7 @@ export class OffresService {
 
   /** GET Offre from the server */
   getOffres(): Observable<Offre[]> {
-    const url = `${this.offerUrl}?format=json`;
+    const url = `${this.offreUrl}?format=json`;
     return this.http.get<Offre[]>(url)
       .pipe(
         tap(_ => console.log('ok'), _ => this.log('fetched offers')),
@@ -53,7 +54,7 @@ export class OffresService {
   /** GET offre by id. Afficheras 404 si l'id n'est pas trouvé */
 
   getOffrebyId(id: number): Observable<Offre> {
-    const url = `${this.offerUrl}/${id}`;
+    const url = `${this.offreUrl}/${id}`;
     return this.http.get<Offre>(url)
       .pipe(
         tap(_ => this.log(`fetched offre id=${id}`)),
@@ -67,7 +68,7 @@ export class OffresService {
 
   /** POST: add a new offer to the server */
   AddOffer(offre: Offre): Observable<Offre> {
-    return this.http.post<Offre>(this.offerUrl, offre, httpOptions).pipe(
+    return this.http.post<Offre>(this.offreUrl, offre, httpOptions).pipe(
       tap((offer: Offre) => this.log(`Offre ajouté w/ id=${offre.id}`)),
       catchError(this.handleError<Offre>('addOffre'))
     );

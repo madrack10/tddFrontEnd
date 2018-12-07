@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
+import { MustMatch } from '@app/helpers/must-match.validator';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class SignupComponent implements OnInit {
   loading = false;
   submitted = false;
 
+
+
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -30,6 +34,11 @@ export class SignupComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/']);
     }
+
+    const users: User[] = [
+      { Id: 1, Username: 'test', Password: 'test', FirstName: 'Test', LastName: 'User', Email: 'user@outlook.fr' }
+    ];
+
   }
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
@@ -38,8 +47,10 @@ export class SignupComponent implements OnInit {
       username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
-    });
+      confirmPassword: ['', Validators.required]
+    }, {
+        validator: MustMatch('password', 'confirmPassword')
+      });
   }
 
 
@@ -61,13 +72,13 @@ export class SignupComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['rest-auth/login/']);
+          this.alertService.success('Inscription Réussie', true);
+          this.router.navigate(['/home/auth/signin']);
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
         });
   }
-  
+
 }

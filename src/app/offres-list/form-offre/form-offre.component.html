@@ -9,7 +9,7 @@
     <div class="contact-content">
       <div class="container">
 
-        <form class="">
+        <form [formGroup]="addOfferForm" (ngSubmit)="onSubmit()" >
 
           <div class="row">
 
@@ -55,7 +55,7 @@
 
             <div class="col-md-6">
               <div class="form-group">
-                <label for="jobID" class="bmd-label-floating">ID Job</label>
+                <label for="jobID" class="bmd-label-floating">ID Job</label>g
                 <input type="text" class="form-control" id="jobID">
                 <span class="bmd-help">Un numero d'identifiant de l'emploi</span>
               </div>
@@ -111,7 +111,7 @@
 
           <div class="submit text-center">
             <!-- <input type="submit" class="btn btn-primary btn-raised btn-round" value="ENREGISTRER"> -->
-            <button type="submit" class="btn btn-primary" >ENREGISTRER</button>
+            <button type="submit" class="btn btn-primary">ENREGISTRER</button>
           </div>
 
         </form>
@@ -120,4 +120,6 @@
   </div>
 </div>
 <br>
+
+
 

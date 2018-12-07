@@ -17,6 +17,9 @@ export class UserService {
   getAll() {
     return this.http.get<User>(`${environment.apiUrl}/users`);
   }
+  getAllUser() {
+    return this.http.get<User[]>(`${environment.apiUrl}/rest-auth/user/`);
+  }
 
 
   register(user: User) {

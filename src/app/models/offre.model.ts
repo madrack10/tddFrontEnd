@@ -1,5 +1,9 @@
+import { User } from './user.model';
+import { TypeContrat } from './typeContrat.model';
+import { Domaine } from './domaine.model';
+
 export class Offre {
-    id: number;
+    id ?: number;
     titre: string;
     description: string;
     jobID: number;
@@ -9,8 +13,8 @@ export class Offre {
     dateOuverture: Date;
     dateLimite: Date ;
     localisation: string;
-    auteur: string;
-    typeoffre: string;
-    domaine: string;
+    auteur: User;
+    typeoffre: TypeContrat;
+    domaine: Domaine;
 }
 

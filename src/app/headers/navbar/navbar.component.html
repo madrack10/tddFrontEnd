@@ -45,14 +45,19 @@
               <i class="material-icons">person_add</i> S'inscrire
             </a>
           </div>
-
-          <!-- <div class="dropdown-menu dropdown-with-icons" *ngIf="currentUser">
-            <a class="dropdown-item" (click)="logout()">
-              <i class="material-icons">account_circle</i> Logout
+        </li>
+        <li class="dropdown nav-item" *ngIf="currentUser">
+          <a class="dropdown-toggle nav-link" data-toggle="dropdown" >
+            <i class="material-icons">account_circle</i> Hi {{currentUser.Username}}
+          </a>
+          <div class="dropdown-menu dropdown-with-icons" >
+            <a class="dropdown-item" routerLink="offres/addOffre">
+              <i class="material-icons">add</i> Ajouter Offres
             </a>
-          </div> -->
-
-
+            <a class="dropdown-item"  (click)="logout()">
+              <i class="material-icons">exit_to_app</i> Logout
+            </a>
+          </div>
         </li>
 
         <li class="nav-item">

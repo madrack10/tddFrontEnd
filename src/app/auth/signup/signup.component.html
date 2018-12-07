@@ -19,75 +19,87 @@
                 <h4> ou, soyez classique </h4>
               </div>
               <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-                  <div class=" form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="material-icons">face</i>
-                    </span>
+                <div class=" form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Pseudo..." formControlName="username"
+                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">le pseudo est requis</div>
+                    </div>
                   </div>
-                  <input type="text" class="form-control" 
-                         placeholder="Pseudo..." 
-                         formControlName="username"
-                         [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                 </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">mail</i>
-                  </span>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">mail</i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Email..." formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">L'email est requis</div>
+                      <div *ngIf="f.email.errors.email">Email n'est pas valide</div>
+                    </div>
+                  </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Email...">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" placeholder="Mot de passe..." class="form-control" formControlName="password"
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                  </div>
                 </div>
-                <input type="password" 
-                       placeholder="Mot de passe..." class="form-control" 
-                       formControlName="password" 
-                       [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-              </div>
-            </div>
 
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons">lock_outline</i>
-                  </span>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" placeholder="Confirmer le mot de passe..." class="form-control"
+                      formContrlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirmer mot de passe</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">les mots de passes ne correspondent pas</div>
+                    </div>
+                  </div>
                 </div>
-                <input type="password" placeholder="Confirmer le mot de passe..." class="form-control" />
-              </div>
-            </div>
 
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="" checked>
-                <span class="form-check-sign">
-                  <span class="check"></span>
-                </span>
-                I agree to the
-                <a href="#something">terms and conditions</a>.
-              </label>
-            </div>
-            <div class="text-center">
-              <a href="#" class="btn btn-primary btn-round">S'inscrire</a>
-            </div>
-            </form>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" checked>
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                    I agree to the
+                    <a href="#something">terms and conditions</a>.
+                  </label>
+                </div>
+                <div class="text-center">
+                  <a class="btn btn-primary btn-round">S'inscrire</a>
+                </div>
+              </form>
 
-            <div class="register-footer"> <span>Déja un compte <a href="#">Login</a> ?</span> </div>
+              <div class="register-footer"> <span>Déja un compte <a [routerLink]="['/home/auth/signin']">Login</a> ?</span> </div>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

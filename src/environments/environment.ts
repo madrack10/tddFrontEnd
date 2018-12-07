@@ -6,7 +6,8 @@
 export const environment = {
   production: false,
   // Ajout de l'url
-  apiUrl: 'http://localhost:8000'
+  // apiUrl: 'http://localhost:8000'
+   apiUrl: 'https://tddback.herokuapp.com'
 };
 
 
